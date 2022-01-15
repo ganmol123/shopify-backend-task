@@ -1,6 +1,8 @@
 const CONSTANTS = require("./../config/constants");
 const { Order } = require("./../models/order.schema");
 const logger = require("./../utils/logger");
+const { Parser } = require("json2csv");
+const fs = require("fs");
 
 /**
  * Create Order
@@ -32,7 +34,8 @@ async function createOrder(req, res) {
       order.order_type = CONSTANTS.ORDER_TYPE.STORAGE;
     }
 
-    order.onboarding_date = Date.now();
+    // order.onboarding_date = Date.now();
+    // Creating a new trackiing doc and Populating tracking ID
     order.tracking_id = req.trackingId;
     order.save();
     res.status(200).send({
@@ -62,7 +65,7 @@ async function updateOrder(req, res) {
   } catch (error) {
     logger.error("Error in updating Order: " + error);
     res.status(500).send({
-      message: "Something went wrong while updating the date: " + error,
+      message: "Something went wrong while updating the Order: " + error,
     });
   }
 }
@@ -133,10 +136,47 @@ async function getAllOrder(req, res) {
   }
 }
 
+/**
+ * Export product data to a CSV
+ * @param {Object} req
+ * @param {Object} res
+ */
+async function convertDatatoCSV(req, res) {
+  try {
+    const order = await Order.find();
+    const fields = [
+      "item_name",
+      "customer_id",
+      "delivery_address",
+      "storage_facilty_address",
+      "active",
+      "tracking_id",
+    ];
+    const opts = { fields };
+
+    try {
+      const parser = new Parser(opts);
+      const csv = parser.parse(order);
+      fs.writeFileSync("orders.csv", csv);
+    } catch (err) {
+      logger.error("Error in jsontocsv parser: " + err);
+    }
+    res.status(200).send({
+      message: "Successfully Exported to export.csv!",
+    });
+  } catch (error) {
+    logger.error("Error in exporting orders to CSV: " + error);
+    res.status(500).send({
+      message: "Something went wrong: " + error,
+    });
+  }
+}
+
 module.exports = {
   createOrder,
   readOrder,
   deleteOrder,
   updateOrder,
   getAllOrder,
+  convertDatatoCSV,
 };

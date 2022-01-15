@@ -14,4 +14,6 @@ router.get("/:orderId", orderController.readOrder);
 
 router.get("/", orderController.getAllOrder);
 
+router.get("/export/csv", orderController.convertDatatoCSV);
+
 module.exports = router;
