@@ -3,6 +3,6 @@ service: shopify-backend-task
 instance_class: F2
 
 env_variables:
-  PORT: 1000
-  NODE_ENV: local
-  MONGODB_URI: mongodb+srv://anmol:QdnoxTpR4ZMByTyb@cluster1.nvixw.mongodb.net/inventory-tracking?retryWrites=true&w=majority
+  PORT: "1000"
+  NODE_ENV: "local"
+  MONGODB_URI: "mongodb+srv://anmol:QdnoxTpR4ZMByTyb@cluster1.nvixw.mongodb.net/inventory-tracking?retryWrites=true&w=majority"
