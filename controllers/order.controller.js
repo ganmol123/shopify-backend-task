@@ -157,7 +157,7 @@ async function convertDatatoCSV(req, res) {
     try {
       const parser = new Parser(opts);
       const csv = parser.parse(order);
-      fs.writeFileSync("orders.csv", csv);
+      fs.writeFileSync("orders_csv.csv", csv);
     } catch (err) {
       logger.error("Error in jsontocsv parser: " + err);
     }
