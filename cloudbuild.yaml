@@ -3,7 +3,3 @@ steps:
   - name: node
     entrypoint: npm
     args: ["install"]
-  # Run custom commands
-  - name: node
-    entrypoint: npm
-    args: ["run", "start"]
