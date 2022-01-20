@@ -35,7 +35,8 @@ npm run startmon //for dev
 ###  Deployed service [shopify-backend-task] to [https://shopify-backend-task-dot-voomp-landing.el.r.appspot.com](https://shopify-backend-task-dot-voomp-landing.el.r.appspot.com)
 
 ## Testing
-### Postman collection link: 
+### As frontend is not implemented please use POSTman or any REST API tester to test out the APIs. 
+### Postman collection link: [https://www.getpostman.com/collections/c74ae51b689fcf32b7f8](https://www.getpostman.com/collections/c74ae51b689fcf32b7f8)
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/14297807-83ecdb22-1300-4d25-9135-428ff57144ee?action=collection%2Ffork&collection-url=entityId%3D14297807-83ecdb22-1300-4d25-9135-428ff57144ee%26entityType%3Dcollection%26workspaceId%3D2477c77a-0362-4ec8-a0ec-2f9272df6e85#?env%5Bshopify-backend-test-env%5D=dW5kZWZpbmVk)
 
